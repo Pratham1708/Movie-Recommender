@@ -6,7 +6,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 # Load your dataset (replace with your actual data loading logic)
 def load_dataset():
     # Replace this with your code to load the dataset from CSV or another source
-    df = pd.read_csv(r"C:\Users\jinda\OneDrive\Desktop\IMDB-Movie-Dataset(2023-1951).csv")
+    df = pd.read_csv('datasets/IMDB-Movie-Dataset(2023-1951).csv')
     return df
 
 # Preprocess data and create TF-IDF matrix (do this outside the function for efficiency)
