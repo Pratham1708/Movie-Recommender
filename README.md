@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender System</title>
 </head>
 <body>
 
@@ -29,7 +30,7 @@
 <ul>
     <li>Collaborative filtering for movie recommendations</li>
     <li>User-based and item-based filtering</li>
-    <li>Easy-to-use interface</li>
+    <li>Easy-to-use interface with Streamlit</li>
     <li>Scalable to accommodate large datasets</li>
 </ul>
 
@@ -48,13 +49,14 @@
 </ol>
 
 <h2 id="usage">Usage</h2>
-<p>To use the Movie Recommender System:</p>
+<p>To use the Movie Recommender System with Streamlit:</p>
 <ol>
     <li>Ensure you have installed all dependencies as described in the Installation section.</li>
-    <li>Run the main script to start the recommendation system:
-        <pre><code>python main.py</code></pre>
+    <li>Run the Streamlit application using the following command:
+        <pre><code>streamlit run app.py</code></pre>
     </li>
-    <li>Follow the on-screen instructions to get movie recommendations.</li>
+    <li>A web browser should open automatically with the Streamlit interface. If not, navigate to <code>http://localhost:8501</code> in your browser.</li>
+    <li>Select a movie from the dropdown menu and click the "Recommend" button to see the list of recommended movies.</li>
 </ol>
 
 <h2 id="dataset">Dataset</h2>
@@ -74,7 +76,7 @@
 </ol>
 
 <h2 id="contact">Contact</h2>
-<p>Pratham Jindal - <a href="mailto:jindalpratham68@gmail.com"> Gmail </a></p>
+<p>Pratham Jindal - <a href="mailto:jindalpratham68@gmail.com">Gmail</a></p>
 <p>Project Link: <a href="https://github.com/Pratham1708/Movie-Recommender">https://github.com/Pratham1708/Movie-Recommender</a></p>
 
 </body>
