@@ -77,7 +77,7 @@
 
 <h2 id="contact">Contact</h2>
 <p>Pratham Jindal - <a href="mailto:jindalpratham68@gmail.com">Gmail</a></p>
-<p>Project Link: <a href="https://github.com/Pratham1708/Movie-Recommender">https://github.com/Pratham1708/Movie-Recommender</a></p>
+<p>Project Link: <a href="https://pratham-movie-recommender.streamlit.app/">Streamlit</a></p>
 
 </body>
 </html>
