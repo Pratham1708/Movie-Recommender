@@ -3,36 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Recommender System</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1, h2 {
-            color: #333;
-        }
-        a {
-            color: #1a0dab;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        pre {
-            background: #f4f4f4;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-        code {
-            font-family: monospace;
-        }
-    </style>
 </head>
 <body>
 
@@ -49,7 +19,6 @@
     <li><a href="#dataset">Dataset</a></li>
     <li><a href="#model">Model</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
 </ul>
 
@@ -104,11 +73,8 @@
     <li>Open a Pull Request</li>
 </ol>
 
-<h2 id="license">License</h2>
-<p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
-
 <h2 id="contact">Contact</h2>
-<p>Pratham Jindal - jindalpratham68@gmail.com</p>
+<p>Pratham Jindal - <a href="jindalpratham68@gmail.com"> Gmail </a></p>
 <p>Project Link: <a href="https://github.com/Pratham1708/Movie-Recommender">https://github.com/Pratham1708/Movie-Recommender</a></p>
 
 </body>
