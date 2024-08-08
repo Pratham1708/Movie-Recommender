@@ -1,30 +1,25 @@
-from flask import Flask, request, jsonify, render_template
+import streamlit as st
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-app = Flask(__name__)
+# Load your dataset (replace with your actual data loading logic)
+def load_dataset():
+    # Replace this with your code to load the dataset from CSV or another source
+    df = pd.read_csv(r"C:\Users\jinda\OneDrive\Desktop\IMDB-Movie-Dataset(2023-1951).csv")
+    return df
 
-# Load the dataset
-df = pd.read_csv(r'C:\Users\jinda\OneDrive\Desktop\IMDB-Movie-Dataset(2023-1951).csv')
+# Preprocess data and create TF-IDF matrix (do this outside the function for efficiency)
+def preprocess_data(df):
+    df['combined_features'] = df['overview'].fillna('') + ' ' + df['cast'].fillna('')
+    tfidf = TfidfVectorizer(stop_words='english')
+    tfidf_matrix = tfidf.fit_transform(df['combined_features'])
+    cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
+    df['movie_name_lower'] = df['movie_name'].str.lower()  # Create a lowercased version of the movie names
+    return df, tfidf_matrix, cosine_sim
 
-# Create a combined feature
-df['combined_features'] = df['overview'].astype(str) + ' ' + df['cast'].astype(str)
-
-# Convert movie names to lower case for case-insensitive comparison
-df['movie_name_lower'] = df['movie_name'].str.lower()
-
-# Initialize the TF-IDF Vectorizer
-tfidf = TfidfVectorizer(stop_words='english')
-
-# Fit and transform the combined features
-tfidf_matrix = tfidf.fit_transform(df['combined_features'])
-
-# Compute the cosine similarity matrix
-cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
-
+# Function to get movie recommendations
 def get_recommendations(movie_name, df, cosine_sim):
-    # Convert the input movie name to lower case
     movie_name_lower = movie_name.lower()
     
     # Get the index of the movie that matches the title (case-insensitive)
@@ -51,18 +46,50 @@ def get_recommendations(movie_name, df, cosine_sim):
 
     return top_5_movies, best_remaining_movie
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+def main():
+    # Custom CSS for styling
+    st.markdown("""
+        <style>
+       body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f2f6;
+        }
+        .title {
+            color: #1f77b4;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .recommendations {
+            margin: 20px 0;
+        }
+        .recommendations h2 {
+            color: #ff7f0e;
+        }
+        .recommendations p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        </style>
+    """, unsafe_allow_html=True)
 
-@app.route('/recommend', methods=['GET'])
-def recommend():
-    movie_name = request.args.get('movie_name')
-    top_5_movies, best_remaining_movie = get_recommendations(movie_name, df, cosine_sim)
-    return jsonify({
-        'top_5_movies': top_5_movies,
-        'best_remaining_movie': best_remaining_movie
-    })
+    st.title("Bollywood Movie Recommender")
 
-if __name__ == '__main__':
-    app.run(debug=True)
+    # Load data and preprocess
+    df = load_dataset()
+    df, tfidf_matrix, cosine_sim = preprocess_data(df)
+
+    movie_titles = df['movie_name'].tolist()
+    selected_movie = st.selectbox("Select a movie", movie_titles)
+
+    if st.button("Recommend"):
+        recommendations, best_remaining = get_recommendations(selected_movie, df, cosine_sim)
+        st.markdown("<div class='recommendations'><h2>Top 5 Movies:</h2></div>", unsafe_allow_html=True)
+        for movie in recommendations:
+            st.write(movie)
+        if best_remaining:
+            st.markdown("<div class='recommendations'><h2>Best Remaining Movie:</h2></div>", unsafe_allow_html=True)
+            st.write(best_remaining)
+
+if __name__ == "__main__":
+    main()
