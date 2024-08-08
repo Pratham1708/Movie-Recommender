@@ -58,7 +58,7 @@
 </ol>
 
 <h2 id="dataset">Dataset</h2>
-<p>The dataset used in this project is the <a href="https://grouplens.org/datasets/movielens/">MovieLens dataset</a>. It contains a large collection of movie ratings provided by users.</p>
+<p>The dataset used in this project is the <a href="https://github.com/Pratham1708/Movie-Recommender/blob/main/datasets/IMDB-Movie-Dataset(2023-1951).csv">IMDB Movie Dataset</a>. It contains a large collection of movie ratings provided by users.</p>
 
 <h2 id="model">Model</h2>
 <p>The recommendation model is based on collaborative filtering techniques, including user-based and item-based filtering. It leverages the similarity between users or items to provide accurate recommendations.</p>
